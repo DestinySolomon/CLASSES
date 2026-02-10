@@ -1,0 +1,109 @@
+/* get element by class name styles
+.box {
+    width: 100px;
+    height: 100px;
+    background: lightblue;
+    margin: 10px;
+    display: inline-block;
+    text-align: center;
+    line-height: 100px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+}
+
+
+
+/*  get element by tag name styles */
+/* 
+p {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 5px;
+}
+
+.highlight {
+    background: yellow;
+    font-weight: bold;
+} */
+
+
+/*  query selector styles */
+/* .special {
+    background: lightgreen;
+    padding: 15px;
+    margin: 10px;
+}
+
+.selected {
+    border: 3px solid blue;
+} */
+
+
+
+/*  query selector all styles */
+
+/* li {
+    list-style: none;
+    padding: 10px;
+    margin: 5px;
+    background: #f0f0f0;
+}
+
+li.expensive {
+    background: #ffcccc;
+}  */
+
+/* =================
+
+Stop-Watch Styling
+====================*/
+
+
+body{
+    height: 100vh;
+    background: url() no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    width: 60px;
+    height: 250px;
+    background-color: #ffff;
+    border-radius: 30px;
+    box-shadow: 0 0 3px;
+}
+
+#timer{
+    width:100%;
+    font-size: 72px;
+    text-align: center;
+    margin: 0px auto;
+    padding: 35px;
+}
+
+button{
+    margin: 0 10px;
+    border: none;
+}
+
+button i {
+    font-size: 2rem;
+    padding: 10px;
+    color: #fff;
+    width: 50px;
+}
+
+#play{
+    background-color: #4CAF50;
+}
+#pause{
+    background-color: orange;
+}
+#reset{
+    background-color: red;
+}

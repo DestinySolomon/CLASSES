@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+     <!-- Font Awesome CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+  />
+  </head>
+  <body>
+    <h1>JavaScript 2</h1>
+
+    <!-- <h2>Events</h2>
+
+     <button onclick="document.getElementById('demo').innerHTML=Date()">The time is?</button>
+
+     <p id="demo"></p>  -->
+
+    <!-- <h3>Example 2</h3>
+
+     
+<button onclick="this.innerHTML=Date()">The time is?</button>  -->
+
+    <!-- <h3>Example 3</h3>
+<p>Click the button to display the date.</p>
+<button onclick="displayDate()">The time is?</button>
+
+<script>
+function displayDate() {
+  document.getElementById("demo").innerHTML = Date();
+}
+</script>
+
+<p id="demo"></p> -->
+
+    <!-- <h3>Example 4</h3>
+
+<button id="myBtn">Time is?</button>
+
+<p id="demo"></p>
+
+<script>
+const btn = document.getElementById("myBtn");
+
+// Add EventListener to btn
+btn.addEventListener("click", function () {
+  document.getElementById("demo").innerHTML = Date();
+});
+</script> -->
+
+    <!-- <h2>The mouseover and mousout Events</h2>
+
+<div id="box"
+style="width:200px;height:100px;padding:16px;border:1px solid #000;">
+Move mouse over this box!
+</div>
+
+<script>
+const box = document.getElementById("box");
+
+// Let box listen for mouseover
+box.addEventListener("mouseover", function () {
+  box.innerHTML = "Mouse is over me!";
+});
+
+// Let box listen for mouseout
+box.addEventListener("mouseout", function () {
+  box.innerHTML = "Mouse is out!";
+});
+</script> -->
+
+    <!-- <h2>Mouse Double-click Events</h2>
+
+<button id="myButton">Double-click me!</button>
+<p id="message"></p>
+
+<script>
+    // Get the button element
+const button = document.getElementById('myButton');
+const message = document.getElementById('message');
+
+// Add double-click event listener
+button.addEventListener('dblclick', function() {
+    message.textContent = 'Button was double-clicked!';
+    
+    // Optional: Change button color temporarily
+    button.style.backgroundColor = 'lightgreen';
+    setTimeout(() => {
+        button.style.backgroundColor = '';
+    }, 500);
+});
+</script> -->
+
+    <!-- <h2>Mouse move</h2>
+
+<div id="tracker" style="height: 200px; border: 2px solid black;">
+  Move mouse here
+</div>
+<p id="coordinates"></p>
+
+<script>
+const tracker = document.getElementById('tracker');
+const coords = document.getElementById('coordinates');
+
+tracker.addEventListener('mousemove', function(e) {
+    coords.textContent = `X: ${e.clientX}, Y: ${e.clientY}`;
+});
+</script> -->
+
+    <!-- <h2>mousedown / mouseup (press and release)</h2>
+
+<div id="pressArea" style="padding: 20px; border: 2px solid black;">
+  Click and hold here
+</div>
+<p id="status">Mouse status: Up</p>
+
+<script>
+const pressArea = document.getElementById('pressArea');
+const statusText = document.getElementById('status');
+
+pressArea.addEventListener('mousedown', function() {
+    statusText.textContent = "Mouse status: DOWN";
+    pressArea.style.backgroundColor = 'lightblue';
+});
+
+pressArea.addEventListener('mouseup', function() {
+    statusText.textContent = "Mouse status: UP";
+    pressArea.style.backgroundColor = '';
+});
+</script> -->
+
+    <!-- <h2>Mouseenter / mouseleave (hover in and out)</h2>
+<div id="hoverBox" style="width: 200px; height: 100px; border: 2px solid black;">
+  Hover over me
+</div>
+<p id="hoverStatus">Outside the box</p>
+
+<script>
+const hoverBox = document.getElementById('hoverBox');
+const hoverStatus = document.getElementById('hoverStatus');
+
+hoverBox.addEventListener('mouseenter', function() {
+    hoverStatus.textContent = "Inside the box!";
+    hoverBox.style.backgroundColor = 'green';
+});
+
+hoverBox.addEventListener('mouseleave', function() {
+    hoverStatus.textContent = "Outside the box";
+    hoverBox.style.backgroundColor = '';
+});
+</script> -->
+
+    <!-- <h2>Contextmenu</h2>
+
+<div id="rightClickArea" style="padding: 20px; border: 2px solid black;">
+  Right-click here
+</div>
+
+<script>
+const rightClickArea = document.getElementById('rightClickArea');
+
+rightClickArea.addEventListener('contextmenu', function(e) {
+    e.preventDefault(); // Prevents default browser context menu
+    alert('Custom right-click menu would open here!');
+    // Could show your own custom menu instead
+});
+</script> -->
+    <!-- 
+<h2>Click</h2>
+<button id="clickBtn">Click me</button>
+<p id="clickCount">Clicked 0 times</p>
+
+<script>
+let count = 0;
+const clickBtn = document.getElementById('clickBtn');
+const clickCount = document.getElementById('clickCount');
+
+clickBtn.addEventListener('click', function() {
+    count++;
+    clickCount.textContent = `Clicked ${count} time${count !== 1 ? 's' : ''}`;
+    //ternary statement was used here to handle singular/plural form
+});
+</script> -->
+
+    <!-- <h2>The keydown Event</h2>
+
+<input id="k" type="text" placeholder="Press a key here!">
+
+<p id="demo"></p>
+
+<script>
+const k = document.getElementById("k");
+
+// Let k listen for keydown
+k.addEventListener("keydown", function (event) {
+  document.getElementById("demo").innerHTML = "You pressed: " + event.key;
+});
+</script>
+
+
+
+
+<CLOCK -->
+
+    <!-- <h2>The setInterval() Method</h2>
+
+<p id="clock"></p>
+
+<script>
+// Call showTime every 1000 millisec
+setInterval(showTime, 1000);
+
+// Function to display the time
+function showTime() {
+  const d = new Date();
+  document.getElementById("clock").innerHTML =
+  d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+}
+</script>  -->
+
+    <!-- SetTimeout Example -->
+    <!-- 
+<h2>The setTimeout() Method</h2>
+<button id="btn">Start</button>
+
+<p id="demo">Wait!</p>
+
+<script>
+const btn = document.getElementById("btn");
+
+// Let btn listen for a click
+btn.addEventListener("click", function () {
+// Then call showMsg after 2 seconds
+  setTimeout(showMsg, 2000);
+});
+
+// Function to display message
+function showMsg() {
+  document.getElementById("demo").innerHTML = "Hello after 2 seconds!";
+}
+</script> -->
+
+    <!-- SetInterval and clearInterval Example -->
+    <!-- 
+<h2>The setInterval() Method</h2>
+
+<button id="start">Start Counter</button>
+<button id="stop">Stop</button>
+
+<p id="counter">0</p>
+
+<script>
+let myInterval;
+let count = 0;
+
+const btnStart = document.getElementById("start");
+const btnStop = document.getElementById("stop");
+
+// let btnStart listen for a click
+btnStart.addEventListener("click", function () {
+// Then start counter 
+  myInterval = setInterval(counter, 1000);
+});
+
+// let btnStop listen for a click
+btnStop.addEventListener("click", function () {
+// Then stop counter
+  clearInterval(myInterval);
+});
+
+function counter() {
+  count++;
+  document.getElementById("counter").innerHTML = count;
+}
+
+</script> -->
+
+    <!-- 
+<h1>DOM MANIPULATION</h1>
+
+<h2>Get Element By Classname</h2>
+
+ <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <button id="colorBtn">Change All Boxes</button>
+
+
+    <script>
+
+document.getElementById('colorBtn').addEventListener('click', function() {
+    // getElementsByClassName returns HTMLCollection
+    const boxes = document.getElementsByClassName('box');
+    
+    // Loop through all elements with class "box"
+    for(let i = 0; i < boxes.length; i++) {
+        boxes[i].style.background = 'lightcoral';
+        boxes[i].style.color = 'white';
+    }
+});
+
+    </script> -->
+
+    <!-- =================================== -->
+
+    <!-- <h2>Get element By Tagname</h2>
+
+ <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+    <button id="styleBtn">Style All Paragraphs</button>
+
+    <script>
+
+      document.getElementById('styleBtn').addEventListener('click', function() {
+    // getElementsByTagName returns HTMLCollection
+    const paragraphs = document.getElementsByTagName('p');
+    
+    // Add class to all <p> elements
+    for(let para of paragraphs) {
+        para.classList.add('highlight');
+    }
+    
+    // Also change first paragraph specifically
+    paragraphs[0].style.color = 'red';
+});
+    </script> -->
+
+    <!-- =========================================== -->
+    <!-- 
+<h2>Query selector</h2>
+
+ <div id="container">
+        <p class="special">Special Paragraph</p>
+        <p>Normal Paragraph</p>
+    </div>
+    <button id="selectBtn">Select First Special</button>
+
+
+    <script>
+
+      document.getElementById('selectBtn').addEventListener('click', function() {
+    // querySelector returns FIRST matching element
+    const firstSpecial = document.querySelector('.special');
+    
+    if(firstSpecial) {
+        firstSpecial.classList.add('selected');
+        firstSpecial.textContent = 'Selected!';
+    }
+    
+    // You can use complex CSS selectors
+    const containerPara = document.querySelector('#container p');
+    if(containerPara) {
+        containerPara.style.fontSize = '20px';
+    }
+});
+    </script>
+
+
+
+
+<h2> query Selector All</h2>
+    <ul>
+ <li data-price="10">Item 1 - $10</li>
+        <li data-price="20">Item 2 - $20</li>
+        <li data-price="30">Item 3 - $30</li>
+    </ul>
+    <button id="totalBtn">Calculate Total</button>
+    <p id="result"></p>
+
+    <script>
+      document.getElementById('totalBtn').addEventListener('click', function() {
+    // querySelectorAll returns NodeList (static)
+    const items = document.querySelectorAll('li[data-price]');
+    let total = 0;
+    
+    // Can use forEach on NodeList
+    items.forEach(function(item) {
+        const price = parseInt(item.getAttribute('data-price'));
+        total += price;
+        
+        // Mark expensive items
+        if(price > 15) {
+            item.classList.add('expensive');
+        }
+    });
+    
+    // Show result
+    document.getElementById('result').textContent = `Total: $${total}`;
+});
+    </script> -->
+
+    <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 300px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 5px gray;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #timer {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border: none;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    button i {
+      font-size: 1.5rem;
+      padding: 15px;
+      color: white;
+    }
+
+    #play { background: green; }
+    #pause { background: orange; }
+    #reset { background: red; }
+  </style>
+
+    <h2>Manipulating HTML and CSS using JS - Stop Watch Project</h2>
+
+    <!-- Container for the elements -->
+    <div class="container">
+  <h3>Stopwatch</h3>
+  <div id="timer">00:00:00</div>
+
+  <button id="startStopBtn">
+    <i class="fa-solid fa-play" id="play"></i>
+  </button>
+
+  <button id="resetBtn">
+    <i class="fa-solid fa-arrow-rotate-left" id="reset"></i>
+  </button>
+</div>
+
+<script>
+  const startStopBtn = document.querySelector("#startStopBtn");
+  const resetBtn = document.querySelector("#resetBtn");
+  const timerDisplay = document.querySelector("#timer");
+
+  let seconds = 0;
+  let minutes = 0;
+  let hours = 0;
+
+  let timerInterval = null;
+  let timerStatus = "stopped";
+
+  function stopWatch() {
+    seconds++;
+
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+    }
+
+    if (minutes === 60) {
+      minutes = 0;
+      hours++;
+    }
+
+    let displaySeconds = seconds < 10 ? "0" + seconds : seconds; // if seconds is less than 10, add 0 in front of it, else use seconds as it is.
+    let displayMinutes = minutes < 10 ? "0" + minutes : minutes; // if minutes is less than 10, add 0 in front of it, else use minutes as it is.
+    let displayHours = hours < 10 ? "0" + hours : hours; // if hours is less than 10, add 0 in front of it, else use hours as it is.
+
+    timerDisplay.textContent =
+      displayHours + ":" + displayMinutes + ":" + displaySeconds;
+  }
+
+  startStopBtn.addEventListener("click", () => {
+    if (timerStatus === "stopped") {
+      timerInterval = setInterval(stopWatch, 1000);
+      startStopBtn.innerHTML = `<i class="fa-solid fa-pause" id="pause"></i>`;
+      timerStatus = "started";
+    } else {
+      clearInterval(timerInterval);
+      startStopBtn.innerHTML = `<i class="fa-solid fa-play" id="play"></i>`;
+      timerStatus = "stopped";
+    }
+  });
+
+  resetBtn.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    seconds = minutes = hours = 0;
+    timerDisplay.textContent = "00:00:00";
+    timerStatus = "stopped";
+    startStopBtn.innerHTML = `<i class="fa-solid fa-play" id="play"></i>`;
+  });
+</script>
+
+    <script src="js2.js"></script>
+  </body>
+</html>
