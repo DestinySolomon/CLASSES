@@ -7,11 +7,13 @@ form.addEventListener("submit", (e) => {
   let messages = [];
   if (name.value === "" || name.value == null) {
     messages.push("Name is required");
+    messages.style.color = "red";
   }
 
   // password validation
   if (password.value.length <= 6) {
     messages.push("Password must be longer than 6 characters");
+    messages.style.color = "red";
   }
 
   if (password.value.length >= 20) {
