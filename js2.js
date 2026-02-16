@@ -20,7 +20,7 @@ JavaScript lets you execute code when events are detected.
 
 HTML allows event handler attributes, with JavaScript code, to be added to HTML elements.
 
-*/ 
+*/
 
 // Syntax
 
@@ -61,7 +61,6 @@ Nevertheless, using addEventListener() is the recommended way to handle events.
 
 //do example 4
 
-
 //MOUSE EVENTS
 /*
 Mouse Events happen when the user interacts with the mouse.
@@ -80,7 +79,6 @@ mousemove - Fires continuously as the mouse pointer moves over an element, provi
 
 mousedown / mouseup -These events fire when a mouse button is pressed down (mousedown) or released (mouseup) over an element, respectively.
 */
-
 
 // KeyBoard Events
 /*
@@ -113,7 +111,6 @@ Developers are advised to use keydown or keyup instead.
 // === A clock ==
 // do example for clock
 
-
 // SetTimeout Method
 
 // the setTimeout() method calls a function or evaluates an expression after a specified number of milliseconds.
@@ -138,7 +135,6 @@ This "timeout ID" can later be passed to clearTimeout() to cancel the timer.
 */
 
 // do example for setTimeout
-
 
 // ===== SetInterval Method ======
 // The setInterval() method calls a function or evaluates an expression at specified intervals (in milliseconds).
@@ -166,8 +162,6 @@ This "timeout ID" can later be passed to clearInterval() to cancel the timer.
 
 // do example for setInterval
 
-
-
 // ====== DOM MANIPULATION ====
 
 // DOM selectors
@@ -186,16 +180,15 @@ HTML (Grandparent)
         └── BUTTON (Grandchild)
         */
 
-        //The HTML DOM is a tree of Nodes that represents an HTML Page.
+//The HTML DOM is a tree of Nodes that represents an HTML Page.
 
-        //The DOM Tree
+//The DOM Tree
 //When a web page loads, the browser creates a tree-like representation of the HTML document.
 
 //Each part of the document are nodes in the tree:
 
 //Class work
 // 1. Create a simple html page with an empty <p> element. Give it any id you like. write a js script that will add some text to the <p> element when the page loads.
-
 
 // DOM Selectors
 //DOM selectors are methods used to select and manipulate HTML elements in the DOM.
@@ -227,7 +220,6 @@ HTML (Grandparent)
 // Syntax: element.remove()
 // do example for remove method
 
-
 // ===== FORMS AND USER INPUT HANDLING =========
 
 // Forms are a crucial part of web development, allowing users to input and submit data. JavaScript can be used to handle form events, validate user input, and enhance the user experience.
@@ -239,3 +231,118 @@ HTML (Grandparent)
 // focus - Fires when an element gains focus.
 // blur - Fires when an element loses focus.
 
+// JSON
+//JSON = (JavaScript Object Notation) it's a data-interchange format. Used for exchanging data between a server and a web applicaation.
+// They can have a few formats. Usually you see a JSON file as an object {key:value} or an array of values [value1, value2, value3] or a combination of both
+
+// You can have an object where one of the values is an array and or you could have an array of objects [{}, {}, {}]
+
+// Create a New JSON file Now
+
+// JSON FORMARTS
+// Using the stringify method of JSON, we can convert a js object or an array into a JSON string
+//JSON.stringify() = converst a JS object to a JSON string
+
+const names = ["Spongebob", "Partrick", "Squidward", "Sanday"];
+
+console.log(names);
+
+// convert it to a json string
+
+const jsonString = JSON.stringify(names);
+//JSON is a built-in object thqat is provided to us to work wih json files
+
+//console.log names before and after stringifying
+console.log(jsonString);
+
+const person = {
+  name: "Spongebob",
+  age: 30,
+  isEmployed: true,
+  hobbies: ["jellyfishing", "karate", "cooking"],
+};
+
+console.log(person); // before stringify
+
+const jsonString = JSON.stringify(person);
+console.log(jsonString);
+
+// json files work with one long string that represents an object or an array
+
+// stringify people
+
+const people = [
+  {
+    name: "Spongebob",
+    age: 30,
+    isEmployed: true,
+  },
+  {
+    name: "Partrick",
+    age: 34,
+    isEmployed: false,
+  },
+
+  {
+    name: "Squidward",
+    age: 50,
+    isEmployed: true,
+  },
+
+  {
+    name: "Sandy",
+    age: 27,
+    isEmployed: false,
+  },
+];
+
+console.log(people); // before stringify
+
+const jsonStringOne = JSON.stringify(people);
+console.log(jsonStringOne);
+
+// JSON.parse() = converts a JSON string into a JavaScript object or array
+
+const jsonNames = `["Spongebob", "Partrick", "Squidward", "Sanday"]`;
+const jsonPerson = `{ name: "Spongebob",age: 30,isEmployed: true,hobbies: ["jellyfishing", "karate", "cooking"]}`;
+const jsonPeople = `[
+                    { name: "Spongebob", age: 30, isEmployed: true },
+                    { name: "Partrick", age: 34, isEmployed: false },
+
+                    { name: "Squidward", age: 50, isEmployed: true },
+
+                     { name: "Sandy", age: 27, isEmployed: false },]`;
+
+// to convert these objects or arrays into a string, we can surround them with a pair of backticks
+// They are all in json formats. To convert them into their original format, use the parse method
+
+const parsedData = JSON.parse(jsonNames);
+console.log(jsonNames); // before passing
+console.log(parsedData);
+
+// jsonPerson
+
+const parsedData2 = JSON.parse(jsonPerson);
+console.log(jsonPerson);
+
+console.log(parsedData2);
+
+// jsonPeople
+
+const parsedData3 = JSON.parse(jsonPeople);
+console.log(jsonPeople);
+console.log(parsedData3);
+
+// How to Fetch A JSON file
+// fetch() is a function. We can pass in a relative or absolute file path or a URL as an argument
+
+fetch("person.json")
+  .then((response) => response.json())
+  .then((value) => console.log(value));
+
+// for people -  an array of objects if you want to get each value
+fetch("people.json")
+  .then((response) => response.json())
+//   .then((values) => values.forEach((value) => console.log(value.name)))
+  .then((values) => values.forEach((value) => console.log(value)))
+  .catch(error => console.error(error));

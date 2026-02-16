@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean To-Do App</title>
+
+    <style>
+      :root {
+        --primary: #4f46e5;
+        --bg: #f4f6fb;
+        --white: #ffffff;
+        --text: #1f2937;
+        --gray: #9ca3af;
+        --danger: #ef4444;
+        --success: #10b981;
+      }
+
+      body.dark {
+        --bg: #1f2937;
+        --white: #111827;
+        --text: #f9fafb;
+        --gray: #6b7280;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #4f46e5, #6366f1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        transition: 0.3s;
+        color: var(--text);
+      }
+
+      .container {
+        background: var(--white);
+        width: 95%;
+        max-width: 550px;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        color: var(--primary);
+      }
+
+      .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .toggle-dark {
+        cursor: pointer;
+        background: var(--primary);
+        color: white;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 14px;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 15px;
+      }
+
+      input,
+      input[type="date"] {
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        flex: 1;
+        background: var(--white);
+        color: var(--text);
+        transition: 0.3s;
+      }
+
+      button {
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        padding: 8px 12px;
+        font-weight: bold;
+      }
+
+      .add-btn {
+        background: var(--primary);
+        color: white;
+      }
+
+      .filters {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+      }
+
+      .filters button {
+        background: #e5e7eb;
+      }
+
+      .filters button.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        background: var(--bg);
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        color: var(--text);
+      }
+
+      li.completed .task-text {
+        text-decoration: line-through;
+        color: var(--gray);
+      }
+
+      .task-date {
+        font-size: 12px;
+        color: var(--gray);
+        margin-top: 4px;
+      }
+
+      .actions {
+        margin-top: 8px;
+        display: flex;
+        gap: 5px;
+      }
+
+      .complete-btn {
+        background: var(--success);
+        color: white;
+      }
+      .delete-btn {
+        background: var(--danger);
+        color: white;
+      }
+      .edit-btn {
+        background: orange;
+        color: white;
+      }
+
+      @media (max-width: 600px) {
+        .input-group {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top-bar">
+        <h1>To-Do App</h1>
+        <div class="toggle-dark">🌙 Dark</div>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="taskInput" placeholder="Enter task..." />
+        <input type="date" id="dateInput" />
+        <button class="add-btn">Add</button>
+      </div>
+
+      <div class="filters">
+        <button data-filter="all" class="active">All</button>
+        <button data-filter="active">Active</button>
+        <button data-filter="completed">Completed</button>
+      </div>
+
+      <ul id="taskList"></ul>
+    </div>
+
+    <script>
+      const taskInput = document.getElementById("taskInput");
+      const dateInput = document.getElementById("dateInput");
+      const addBtn = document.querySelector(".add-btn");
+      const taskList = document.getElementById("taskList");
+      const filterButtons = document.querySelectorAll(".filters button");
+      const darkToggle = document.querySelector(".toggle-dark");
+
+      let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      let currentFilter = "all";
+      let darkMode = localStorage.getItem("darkMode") === "true";
+
+      if (darkMode) document.body.classList.add("dark");
+
+      function saveData() {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        localStorage.setItem("darkMode", darkMode);
+      }
+
+      function addTask() {
+        const text = taskInput.value.trim();
+        const date = dateInput.value;
+
+        if (!text) return;
+
+        tasks.push({ text, date, completed: false });
+        taskInput.value = "";
+        dateInput.value = "";
+        saveData();
+        renderTasks();
+      }
+
+      function renderTasks() {
+        taskList.innerHTML = "";
+
+        tasks.forEach((task, index) => {
+          if (
+            (currentFilter === "active" && task.completed) ||
+            (currentFilter === "completed" && !task.completed)
+          )
+            return;
+
+          const li = document.createElement("li");
+          if (task.completed) li.classList.add("completed");
+
+          li.innerHTML = `
+      <span class="task-text">${task.text}</span>
+      ${task.date ? `<div class="task-date">Due: ${task.date}</div>` : ""}
+      <div class="actions">
+        <button class="complete-btn" data-action="toggle" data-index="${index}">
+          ${task.completed ? "Undo" : "Done"}
+        </button>
+        <button class="edit-btn" data-action="edit" data-index="${index}">Edit</button>
+        <button class="delete-btn" data-action="delete" data-index="${index}">Delete</button>
+      </div>
+    `;
+
+          taskList.appendChild(li);
+        });
+      }
+
+      /* -------- Event Listeners -------- */
+
+      addBtn.addEventListener("click", addTask);
+
+      taskList.addEventListener("click", (e) => {
+        const action = e.target.dataset.action;
+        const index = e.target.dataset.index;
+
+        if (!action) return;
+
+        if (action === "toggle") {
+          tasks[index].completed = !tasks[index].completed;
+        }
+
+        if (action === "delete") {
+          tasks.splice(index, 1);
+        }
+
+        if (action === "edit") {
+          const newText = prompt("Edit task:", tasks[index].text);
+          if (newText && newText.trim()) {
+            tasks[index].text = newText.trim();
+          }
+        }
+
+        saveData();
+        renderTasks();
+      });
+
+      
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          currentFilter = button.dataset.filter;
+          renderTasks();
+        });
+      });
+
+      darkToggle.addEventListener("click", () => {
+        darkMode = !darkMode;
+        document.body.classList.toggle("dark");
+        saveData();
+      });
+
+      renderTasks();
+    </script>
+  </body>
+</html>

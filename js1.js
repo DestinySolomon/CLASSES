@@ -729,7 +729,7 @@ console.log(getGrade(80));
 
 const numberz = [1, 2, 3, 4];
 const values = [6, 8, 9, 5];
-const squares = numberz.map((double) => double * double);
+const squares = numberz.map((double) => double * double); // [1, 4, 9, 16]
 console.log(squares);
 
 
