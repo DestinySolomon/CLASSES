@@ -243,63 +243,63 @@ HTML (Grandparent)
 // Using the stringify method of JSON, we can convert a js object or an array into a JSON string
 //JSON.stringify() = converst a JS object to a JSON string
 
-const names = ["Spongebob", "Partrick", "Squidward", "Sanday"];
+// const names = ["Spongebob", "Partrick", "Squidward", "Sanday"];
 
-console.log(names);
+// console.log(names);
 
-// convert it to a json string
+// // convert it to a json string
 
-const jsonString = JSON.stringify(names);
-//JSON is a built-in object thqat is provided to us to work wih json files
+// const jsonString = JSON.stringify(names);
+// //JSON is a built-in object thqat is provided to us to work wih json files
 
-//console.log names before and after stringifying
-console.log(jsonString);
+// //console.log names before and after stringifying
+// console.log(jsonString);
 
-const person = {
-  name: "Spongebob",
-  age: 30,
-  isEmployed: true,
-  hobbies: ["jellyfishing", "karate", "cooking"],
-};
+// const person = {
+//   name: "Spongebob",
+//   age: 30,
+//   isEmployed: true,
+//   hobbies: ["jellyfishing", "karate", "cooking"],
+// };
 
-console.log(person); // before stringify
+// console.log(person); // before stringify
 
-const jsonString = JSON.stringify(person);
-console.log(jsonString);
+// const jsonString = JSON.stringify(person);
+// console.log(jsonString);
 
-// json files work with one long string that represents an object or an array
+// // json files work with one long string that represents an object or an array
 
-// stringify people
+// // stringify people
 
-const people = [
-  {
-    name: "Spongebob",
-    age: 30,
-    isEmployed: true,
-  },
-  {
-    name: "Partrick",
-    age: 34,
-    isEmployed: false,
-  },
+// const people = [
+//   {
+//     name: "Spongebob",
+//     age: 30,
+//     isEmployed: true,
+//   },
+//   {
+//     name: "Partrick",
+//     age: 34,
+//     isEmployed: false,
+//   },
 
-  {
-    name: "Squidward",
-    age: 50,
-    isEmployed: true,
-  },
+//   {
+//     name: "Squidward",
+//     age: 50,
+//     isEmployed: true,
+//   },
 
-  {
-    name: "Sandy",
-    age: 27,
-    isEmployed: false,
-  },
-];
+//   {
+//     name: "Sandy",
+//     age: 27,
+//     isEmployed: false,
+//   },
+// ];
 
-console.log(people); // before stringify
+// console.log(people); // before stringify
 
-const jsonStringOne = JSON.stringify(people);
-console.log(jsonStringOne);
+// const jsonStringOne = JSON.stringify(people);
+// console.log(jsonStringOne);
 
 // JSON.parse() = converts a JSON string into a JavaScript object or array
 
@@ -316,9 +316,9 @@ const jsonPeople = `[
 // to convert these objects or arrays into a string, we can surround them with a pair of backticks
 // They are all in json formats. To convert them into their original format, use the parse method
 
-const parsedData = JSON.parse(jsonNames);
-console.log(jsonNames); // before passing
-console.log(parsedData);
+// const parsedData = JSON.parse(jsonNames);
+// console.log(jsonNames); // before passing
+// console.log(parsedData);
 
 // jsonPerson
 
@@ -346,3 +346,76 @@ fetch("people.json")
 //   .then((values) => values.forEach((value) => console.log(value.name)))
   .then((values) => values.forEach((value) => console.log(value)))
   .catch(error => console.error(error));
+
+
+
+  // Asynchronous Programming
+  /*
+  Async code allows a program to start a long-running task (like fetching data from a file). and continue with other tasks before the first one finishes.
+
+Async code prevents the application from freezing, which is critical for user experience.
+
+
+
+Control Flow
+Control Flow is the order in which statements are executed in a program.
+
+By default, JavaScript runs code from top to bottom and left to right.
+
+Async programming can change this.
+
+How JavaScript Runs Code
+JavaScript executes code one line at a time.
+
+Each line must finish before the next line runs
+
+Do Control flow Example
+
+
+
+Function Sequence
+JavaScript functions are executed in the sequence they are called. Not in the sequence they are defined.
+
+This example will display "Hello Goodbye" because the functions are called in that order:
+
+Example - Do function Sequence Example
+
+Note
+The examples above are normal synchronous flow.
+
+
+Why Async Code
+Some tasks take time to finish (network requests, timers, user input).
+
+To stay responsive, JavaScript can use async programming.
+
+Asynchronous flow refers to how JavaScript allows certain operations to run in the background and let their results be handled when they are ready.
+
+If JavaScript waited for these tasks, the page would freeze.
+
+Asych code lets the rest of the program continue to run.
+
+Async code does not run immediately:
+
+Timers run after a specified number of milliseconds
+Events run when triggered by an event
+Network requests run when the data arrives
+Note
+A frozen page is a broken page.
+
+Asynch code does not block execution.
+
+DO ASYNC CODE EXAMPLE
+
+====================================
+Asynchronous Consepts
+JavaScript handles asynchronus programming using different core consepts.
+
+Concept	Description
+Synchronus -	The JavaScript standard flow is executing line by line
+Timers	-Allows code to run while other code is waiting
+Callbacks	- Callbacks were the first solution for async JavaScript
+Events-	Stores callback function waiting to be executed
+Promises-	Tools to handle asynchronous operations cleanly
+Async/Await-	The clean and modern way to handle async code
+  */

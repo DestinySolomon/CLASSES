@@ -733,3 +733,28 @@ const squares = numberz.map((double) => double * double); // [1, 4, 9, 16]
 console.log(squares);
 
 
+// ======== EVENTS ====
+/*
+Events are actions or occurrences that happen in the browser, often triggered by user interactions (like clicks, keypresses, or form submissions) or by the browser itself (like page loading or resizing).
+
+
+Examples of events:
+
+An HTML button is clicked
+A web page has finished loading
+The mouse moves over an element
+A keyboard key is pressed
+An HTML input field is changed
+
+
+
+// Syntax
+
+//with single quotes
+// <element event='some JavaScript code'>
+
+//with double quotes
+// <element event="some JavaScript code">
+*/
+
+
